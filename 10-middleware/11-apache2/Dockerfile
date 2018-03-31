@@ -15,7 +15,7 @@
 # 以终端方式 Attach 到正在运行的容器:
 #   docker exec -it test-apache2 bash
 
-FROM basic-ubuntu-env:1.0
+FROM thinkbase.net/basic-ubuntu-env:1.0
 MAINTAINER thinkbase.net
 
 ### 可调整的环境变量 #############################################################

@@ -1,4 +1,4 @@
-# basic-ubuntu-env: 基本的 Ubuntu 环境
+# thinkbase.net/basic-ubuntu-env: 基本的 Ubuntu 环境
 #
 # 构造 image:
 #   docker build --force-rm -t thinkbase.net/basic-ubuntu-env:1.0 .
