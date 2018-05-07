@@ -36,12 +36,12 @@ echo "flush privileges;" >> /tmp/boot.sql
 # Review boot.sql
 cat /tmp/boot.sql
 
-echo "system echo '>>>>>>>> This is the init sql for database, run once only.'" > /tmp/init.sql
+echo "system echo '>>>>>>>> This is the init sql for database, run once only.';" > /tmp/init.sql
 if [ "${FIRST_START}" = "YES" ]
 then
 	echo "${MYSQL_INIT_SQL}" >> /tmp/init.sql
 fi
-echo "system echo '******** Init sql for database finished.'" >> /tmp/init.sql
+echo "system echo '******** Init sql for database finished.';" >> /tmp/init.sql
 # Review init.sql
 cat /tmp/init.sql
 
