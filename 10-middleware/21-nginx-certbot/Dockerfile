@@ -35,4 +35,4 @@ RUN apt-get update
 RUN apt-get install -y --allow-unauthenticated software-properties-common
 RUN DEBIAN_FRONTEND=noninteractive add-apt-repository ppa:certbot/certbot
 RUN apt-get update
-apt-get install -y --allow-unauthenticated python-certbot-nginx
+RUN apt-get install -y --allow-unauthenticated python-certbot-nginx
