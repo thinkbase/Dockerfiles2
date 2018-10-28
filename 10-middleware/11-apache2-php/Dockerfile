@@ -32,7 +32,7 @@ ENV RT_WORK_COMMAND 'echo "Can not reach here !"'
 ENV LATEST_PHP_INI "/not-exist.ini"
 ###############################################################################
 
-# 自定义的 Apache 的 sites-enabled 目录位置(如果存在 Web 资源、配置文件等 volume 需求，可以在运行是自行定义其他 volume)
+# 自定义的 Apache 的 sites-enabled 目录位置(如果存在 Web 资源、配置文件等 volume 需求，可以在运行时自行定义其他 volume)
 VOLUME ["/sites-enabled"]
 
 # Apache2 的运行端口
