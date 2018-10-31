@@ -11,9 +11,9 @@ nginx
 certbot --nginx -m "${CERTBOT_EMAIL}" -d "${CERTBOT_DOMAIN}" -n --agree-tos
 
 # 在 nginx 的 配置文件(certbot 会修改它) 中注入关联的附加配置文件( include /sites-enabled/default.d/*.conf )
-sed -i '/include\ \/sites-enabled/d' /etc/nginx/nginx.conf
+sed -i '/include\ \/sites-enabled/d' /etc/nginx/sites-enabled/default
 # 在 "ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot" 这句话之后
-sed -i 's/^\s*ssl_dhparam\ \/etc\/letsencrypt\/ssl-dhparams.pem\;\ .*managed\ by\ Certbot$/include\ \/sites-enabled\/default.d\/\*\.conf\;/g' /etc/nginx/nginx.conf
+sed -i 's/^\s*ssl_dhparam\ \/etc\/letsencrypt\/ssl-dhparams.pem\;\ .*managed\ by\ Certbot$/include\ \/sites-enabled\/default.d\/\*\.conf\;/g' /etc/nginx/sites-enabled/default
 
 # Relood nginx
 nginx -s reload
