@@ -1,6 +1,10 @@
 ## 构造 image
 
-   `docker build --force-rm -t thinkbase.net/nginx-certbot:1.0 .`
+   
+
+```shell
+docker build --force-rm -t thinkbase.net/nginx-certbot:1.0 .
+```
 
 - 可以使用代理服务器, 比如:
 
