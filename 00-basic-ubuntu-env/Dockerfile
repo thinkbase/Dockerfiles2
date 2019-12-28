@@ -1,20 +1,20 @@
 # thinkbase.net/basic-ubuntu-env: 基本的 Ubuntu 环境
 #
 # 构造 image:
-#   docker build --force-rm -t thinkbase.net/basic-ubuntu-env:1.0 .
+#   docker build --force-rm -t thinkbase.net/basic-ubuntu-env:18.04 .
 # (如果在使用 HTTP 代理的情况下 build)
 #   export PROXY_ARGS="--build-arg http_proxy=http://192.168.0.1:8123 --build-arg https_proxy=http://192.168.0.1:8123"
-#   docker build ${PROXY_ARGS} --force-rm -t thinkbase.net/basic-ubuntu-env:1.0 .
+#   docker build ${PROXY_ARGS} --force-rm -t thinkbase.net/basic-ubuntu-env:18.04 .
 # 建议用于测试的启动方式:
-#   docker run --rm -v /tmp:/test --name test-ubuntu-env thinkbase.net/basic-ubuntu-env:1.0
+#   docker run --rm -v /tmp:/test --name test-ubuntu-env thinkbase.net/basic-ubuntu-env:18.04
 # (或者指定 uid 和 pid)
-#   docker run --rm -v /tmp:/test -e RT_WORKER_UID=3000 -e RT_WORKER_GID=3000 --name test-ubuntu-env thinkbase.net/basic-ubuntu-env:1.0
+#   docker run --rm -v /tmp:/test -e RT_WORKER_UID=3000 -e RT_WORKER_GID=3000 --name test-ubuntu-env thinkbase.net/basic-ubuntu-env:18.04
 # 创建容器, 直接进入终端(常用于排错):
-#   docker run -it --rm -v /tmp:/test --name test-ubuntu-env thinkbase.net/basic-ubuntu-env:1.0 bash
+#   docker run -it --rm -v /tmp:/test --name test-ubuntu-env thinkbase.net/basic-ubuntu-env:18.04 bash
 # 以终端方式 Attach 到正在运行的容器:
 #   docker exec -it test-ubuntu-env bash
 
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 MAINTAINER thinkbase.net
 
 ### 可调整的环境变量 #############################################################
@@ -51,9 +51,9 @@ RUN apt-get install -y locales
 RUN locale-gen zh_CN.UTF-8 &&\
     DEBIAN_FRONTEND=noninteractive dpkg-reconfigure locales
 RUN locale-gen zh_CN.UTF-8  
-ENV LANG zh_CN.UTF-8  
-ENV LANGUAGE zh_CN:zh  
-ENV LC_ALL zh_CN.UTF-8  
+ENV LANG zh_CN.UTF-8
+ENV LANGUAGE zh_CN:zh
+ENV LC_ALL zh_CN.UTF-8
 
 # 定制的启动脚本
 ADD resources/docker-init /docker-init
