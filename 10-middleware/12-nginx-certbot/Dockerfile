@@ -18,7 +18,7 @@ ENV CERTBOT_DOMAIN "thinkbase.tech,www.thinkbase.tech"
 VOLUME /sites-enabled/default.d
 
 # Let's Encrypt 证书存储
-# (注意! 如果 /etc/letsencrypt 没有使用 VOLUME 放到容器之外的话, 多次创建容器容易打破 Let's Encrypt 的每一 5 次限制！)
+# (注意! 如果 /etc/letsencrypt 没有使用 VOLUME 放到容器之外的话, 多次创建容器容易打破 Let's Encrypt 的每月 5 次限制！)
 VOLUME /etc/letsencrypt
 
 # nginx 的运行端口 - certbot 执行过程中总是通过域名访问服务器的 80 端口
