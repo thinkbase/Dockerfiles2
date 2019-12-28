@@ -40,9 +40,14 @@ RUN \
     export DEBIAN_FRONTEND=noninteractive; \
     apt-get install -y --allow-unauthenticated telnet; \
     apt-get install -y --allow-unauthenticated nano
+RUN \
+    export DEBIAN_FRONTEND=noninteractive; \
+    apt-get install -y --allow-unauthenticated git
 
 # 时区设置
-RUN apt-get install -y tzdata
+RUN \
+    export DEBIAN_FRONTEND=noninteractive; \
+    apt-get install -y --allow-unauthenticated tzdata
 ENV TZ=Asia/Shanghai
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
