@@ -40,10 +40,15 @@ RUN \
 RUN \
     export DEBIAN_FRONTEND=noninteractive; \
     apt-get install -y --allow-unauthenticated telnet; \
-    apt-get install -y --allow-unauthenticated nano
+    apt-get install -y --allow-unauthenticated nano;
 RUN \
     export DEBIAN_FRONTEND=noninteractive; \
-    apt-get install -y --allow-unauthenticated git
+    apt-get install -y --allow-unauthenticated git;
+RUN \
+    export DEBIAN_FRONTEND=noninteractive; \
+    apt-get install -y --allow-unauthenticated curl; \
+    apt-get install -y --allow-unauthenticated gnupg2; \
+    apt-get install -y --allow-unauthenticated xz-utils;
 
 # 时区设置
 RUN \
