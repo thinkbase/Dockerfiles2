@@ -16,13 +16,15 @@ then
 	usermod -a -G sudo u01
 fi
 
-echo "[$(date)] >>> Begin to run (as root) [/docker-init/etc/root.sh] ..."
+echo "[$(date +%Y%m%d-%H%M%S)] >>> Begin to run (as root) [/docker-init/etc/root.sh] ..."
 /docker-init/etc/root.sh
-echo "[$(date)] >>> Begin to run (as u01) [/docker-init/etc/u01.sh] ..."
-su u01 -c /docker-init/etc/u01.sh
+echo "[$(date +%Y%m%d-%H%M%S)] >>> Begin to run (as u01) [/docker-init/etc/u01.sh] ..."
+sudo -u u01 "/docker-init/etc/u01.sh"
 
 # 以 u01 的身份执行命令指定命令
 echo "********************************************************************************"
-echo "[$(date)] >>> Begin to run (as u01) [${RT_WORK_COMMAND}] ..."
+echo "[$(date +%Y%m%d-%H%M%S)] >>> Begin to run (as u01) [${RT_WORK_COMMAND}] ..."
 echo "********************************************************************************"
-su u01 -c "${RT_WORK_COMMAND}"
+echo "${RT_WORK_COMMAND}" > /tmp/cmd.sh
+chmod +x /tmp/cmd.sh
+sudo -u u01 /tmp/cmd.sh
