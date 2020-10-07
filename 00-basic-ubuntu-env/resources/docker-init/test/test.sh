@@ -13,6 +13,8 @@ echo "$*"   >> /test/${USER}
 echo "----" >> /test/${USER}
 env         >> /test/${USER}
 
+ls -al /test/${USER}
+
 echo ">>> /test/${USER} created. Now waiting 120 seconds ..."
 sleep 120
 echo ">>> Bye!" 

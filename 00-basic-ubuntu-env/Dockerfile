@@ -1,13 +1,13 @@
 # thinkbase.net/basic-ubuntu-env: 基本的 Ubuntu 环境
 #
 # 构造 image:
-#   docker build --force-rm -t thinkbase.net/basic-ubuntu-env:20.04 .
+#   docker build --force-rm -t thinkbase.net/basic-ubuntu-env:20.04.02 .
 # 建议用于测试的启动方式:
-#   docker run --rm -v /tmp:/test --name test-ubuntu-env thinkbase.net/basic-ubuntu-env:20.04
+#   docker run --rm -v /tmp:/test --name test-ubuntu-env thinkbase.net/basic-ubuntu-env:20.04.02
 # (或者指定 uid 和 pid)
-#   docker run --rm -v /tmp:/test -e RT_WORKER_UID=3000 -e RT_WORKER_GID=3000 --name test-ubuntu-env thinkbase.net/basic-ubuntu-env:20.04
+#   docker run --rm -v /tmp:/test -e RT_WORKER_UID=3000 -e RT_WORKER_GID=3000 --name test-ubuntu-env thinkbase.net/basic-ubuntu-env:20.04.02
 # 创建容器, 直接进入终端(常用于排错):
-#   docker run -it --rm -v /tmp:/test --name test-ubuntu-env thinkbase.net/basic-ubuntu-env:20.04 bash
+#   docker run -it --rm -v /tmp:/test --name test-ubuntu-env thinkbase.net/basic-ubuntu-env:20.04.02 bash
 # 以终端方式 Attach 到正在运行的容器:
 #   docker exec -it test-ubuntu-env bash
 
