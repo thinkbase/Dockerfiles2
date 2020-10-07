@@ -39,6 +39,10 @@ RUN echo "export M2_HOME=/opt/apache-maven-3.6.3" >> /etc/profile
 RUN echo "export PATH=/opt/apache-maven-3.6.3/bin:\$PATH" >> /etc/profile
 RUN rm -fv /tmp/apache-maven-3.6.3-bin.tar.gz
 
+# fontconfig
+RUN apt-get update
+RUN apt-get install -y fontconfig
+
 # 启动脚本
 ADD resources/docker-init /docker-init
 CMD ["/docker-init/start.sh"]
