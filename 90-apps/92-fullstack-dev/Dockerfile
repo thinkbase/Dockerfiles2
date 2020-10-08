@@ -43,6 +43,14 @@ RUN rm -fv /tmp/apache-maven-3.6.3-bin.tar.gz
 RUN apt-get update
 RUN apt-get install -y fontconfig
 
+# async-profiler
+RUN wget -O "/tmp/async-profiler-1.8.1-linux-x64.tar.gz" \
+    https://github.com/jvm-profiling-tools/async-profiler/releases/download/v1.8.1/async-profiler-1.8.1-linux-x64.tar.gz
+RUN tar xzvf /tmp/async-profiler-1.8.1-linux-x64.tar.gz -C /opt
+RUN echo "#Install async-profiler-1.8.1" >> /etc/profile
+RUN echo "export PATH=/opt/async-profiler-1.8.1-linux-x64:\$PATH" >> /etc/profile
+RUN rm -fv /tmp/async-profiler-1.8.1-linux-x64.tar.gz
+
 # 启动脚本
 ADD resources/docker-init /docker-init
 CMD ["/docker-init/start.sh"]
