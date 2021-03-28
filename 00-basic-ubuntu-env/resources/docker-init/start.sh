@@ -31,4 +31,4 @@ echo "${RT_WORK_COMMAND}" > /docker-init/etc/u01.d/ZZ-RT_WORK_COMMAND.sh
 echo "[$(date +%Y%m%d-%H%M%S)] >>> Begin to run (as root) [/docker-init/etc/root.sh] ..."
 /docker-init/etc/root.sh
 echo "[$(date +%Y%m%d-%H%M%S)] >>> Begin to run (as u01) [/docker-init/etc/u01.sh] ..."
-sudo -u u01 "/docker-init/etc/u01.sh"
+sudo -E -u u01 "/docker-init/etc/u01.sh"

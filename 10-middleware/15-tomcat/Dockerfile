@@ -30,5 +30,12 @@ EXPOSE 8080
 RUN apt-get update
 RUN apt-get install -y tomcat9
 
-# 替换 root.sh (被 /docker-init/start.sh 调用)
-ADD resources/docker-init/etc/root.sh /docker-init/etc/root.sh
+# 启动需要的脚本 (被 /docker-init/start.sh 调用)
+ADD resources/docker-init/etc/root.d/01-tomcat-prepare.sh /docker-init/etc/root.d/01-tomcat-prepare.sh
+ADD resources/docker-init/etc/u01.d/01-tomcat-start.sh    /docker-init/etc/u01.d/01-tomcat-start.sh
+
+# 设定命令行启动必须的环境变量 (ref: /lib/systemd/system/tomcat9.service)
+ENV CATALINA_HOME=/usr/share/tomcat9
+ENV CATALINA_BASE=/var/lib/tomcat9
+ENV CATALINA_TMPDIR=/tmp
+ENV JAVA_OPTS=-Djava.awt.headless=true
