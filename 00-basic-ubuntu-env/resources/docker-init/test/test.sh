@@ -1,4 +1,11 @@
 #!/bin/bash
+set -u
+
+if [[ "$(cat /docker-init/info/ENV_FIRST_BOOT)" == "true" ]]; then
+	echo "*** It's the FIRST boot of container"
+else
+	echo "*** It's NOT the first boot of container"
+fi
 
 # 输出时间
 date

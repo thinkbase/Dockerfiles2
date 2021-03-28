@@ -1,17 +1,19 @@
 # thinkbase.net/basic-ubuntu-env: 基本的 Ubuntu 环境
 #
 # 构造 image:
-#   docker build --force-rm -t thinkbase.net/basic-ubuntu-env:20.04.02 .
+#   docker build --force-rm -t thinkbase.net/basic-ubuntu-env:20.04-03 .
 # 建议用于测试的启动方式:
-#   docker run --rm -v /tmp:/test --name test-ubuntu-env thinkbase.net/basic-ubuntu-env:20.04.02
+#   docker run --rm -v /tmp:/test --name test-ubuntu-env thinkbase.net/basic-ubuntu-env:20.04-03
 # (或者指定 uid 和 pid)
-#   docker run --rm -v /tmp:/test -e RT_WORKER_UID=3000 -e RT_WORKER_GID=3000 --name test-ubuntu-env thinkbase.net/basic-ubuntu-env:20.04.02
+#   docker run --rm -v /tmp:/test -e RT_WORKER_UID=3000 -e RT_WORKER_GID=3000 --name test-ubuntu-env thinkbase.net/basic-ubuntu-env:20.04-03
 # 创建容器, 直接进入终端(常用于排错):
-#   docker run -it --rm -v /tmp:/test --name test-ubuntu-env thinkbase.net/basic-ubuntu-env:20.04.02 bash
+#   docker run -it --rm -v /tmp:/test --name test-ubuntu-env thinkbase.net/basic-ubuntu-env:20.04-03 bash
 # 以终端方式 Attach 到正在运行的容器:
 #   docker exec -it test-ubuntu-env bash
 
-FROM ubuntu:20.04
+#ubuntu:20.04
+FROM ubuntu:focal-20210325
+
 MAINTAINER thinkbase.net
 
 ### 可调整的环境变量 #############################################################
@@ -20,7 +22,7 @@ ENV RT_WORKER_UID 1000
 # RT_WORKER_GID: 用于运行启动脚本的用户 GID
 ENV RT_WORKER_GID 1000
 # RT_WORK_COMMAND: 启动后通过 /docker-init/start.sh 执行的命令
-ENV RT_WORK_COMMAND "/docker-init/test/test.sh 2017-06-03 '07 24 12'"
+ENV RT_WORK_COMMAND "/docker-init/test/test.sh 2021-03-28 '07 15 01'"
 ###############################################################################
 
 # 更新并安装基本的系统

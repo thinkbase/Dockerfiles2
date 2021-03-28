@@ -11,9 +11,14 @@ fi
 grep "^u01" /etc/passwd
 if [ $? -ne 0 ]
 then
+	echo "useradd - u01 (${RT_WORKER_GID}:${RT_WORKER_UID}) ..."
 	useradd -m -u ${RT_WORKER_UID} -g ${RT_WORKER_GID} -d /home/u01 -s /bin/bash u01
 	echo "u01:docker.io" | chpasswd  # Can't set password properly with "-p" argument in "useradd" command
 	usermod -a -G sudo u01
+	# 标识为第一次启动
+	echo "true" > /docker-init/info/ENV_FIRST_BOOT
+else
+	echo "false" > /docker-init/info/ENV_FIRST_BOOT
 fi
 
 # 准备 - 以 u01 的身份执行命令指定命令
