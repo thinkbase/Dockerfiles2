@@ -1,0 +1,13 @@
+<user-mapping>
+	<!-- password is "123456" -->
+    <authorize
+            username="u01"
+            password="e10adc3949ba59abbe56e057f20f883e"
+            encoding="md5">
+        <connection name="localhost">
+            <protocol>rdp</protocol>
+            <param name="hostname">localhost</param>
+            <param name="port">3389</param>
+        </connection>
+    </authorize>
+</user-mapping>

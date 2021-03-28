@@ -16,11 +16,11 @@ MAINTAINER thinkbase.net
 # Tomcat 的 webapps 目录
 ENV CATALINA_WEBAPPS=/var/lib/tomcat9/webapps
 
-### 可调整的环境变量 #############################################################
-# 参考 00-basic-ubuntu-env
-# RT_WORK_COMMAND: 此命令不会被执行到(来自 00-basic-ubuntu-env)
-ENV RT_WORK_COMMAND 'echo "Can not reach here !"'
-###############################################################################
+# 应用日志目录前缀(在可能存在多个应用的情况下, 采用 tail 符合前缀的所有日志的方式来实现容器终端输出)
+ENV RT_CONSOLE_LOG_PREFIX=/tmp/tomcat-container-
+
+# 参考 00-basic-ubuntu-env , 使用此命令执行最后的 tail
+ENV RT_WORK_COMMAND 'tail -f ${RT_CONSOLE_LOG_PREFIX}*.log'
 
 # tomcat 的运行端口
 EXPOSE 8080
@@ -31,8 +31,8 @@ RUN apt-get update
 RUN apt-get install -y tomcat9
 
 # 启动需要的脚本 (被 /docker-init/start.sh 调用)
-ADD resources/docker-init/etc/root.d/01-tomcat-prepare.sh /docker-init/etc/root.d/01-tomcat-prepare.sh
-ADD resources/docker-init/etc/u01.d/01-tomcat-start.sh    /docker-init/etc/u01.d/01-tomcat-start.sh
+ADD resources/docker-init/etc/root.d/50-tomcat-prepare.sh /docker-init/etc/root.d/50-tomcat-prepare.sh
+ADD resources/docker-init/etc/u01.d/50-tomcat-start.sh    /docker-init/etc/u01.d/50-tomcat-start.sh
 
 # 设定命令行启动必须的环境变量 (ref: /lib/systemd/system/tomcat9.service)
 ENV CATALINA_HOME=/usr/share/tomcat9
